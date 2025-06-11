@@ -225,7 +225,8 @@
 
     /* ----------  Guest list (CSV fetch gated by pass code) ---------- */
     const PASSCODE='changeme';                    // <- choose a secret phrase
-    const sheetURL='';                            // <- paste your Publish-to-Web CSV link
+   const sheetURL = 'https://docs.google.com/spreadsheets/d/1_V6VSx9gQlmc4a2YX8FNdac0iM_C4qQZnd4jTJIckLs/gviz/tq?tqx=out:csv&gid=0';
+
 
     document.getElementById('showGuestsBtn').addEventListener('click',()=>{
       const attempt=prompt('Enter pass code');
