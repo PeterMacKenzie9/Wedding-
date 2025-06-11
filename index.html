@@ -1,262 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Peter &amp; Rachel — Wedding</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peter & Rachel — Wedding</title>
 
-    <!-- Google Fonts for a modern look -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
 
-    <!-- Lightbox (gallery pop-up) -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+  <!-- Lightbox gallery -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
 
-    <style>
-        :root {
-            --primary: #1e3a8a; /* indigo-900 */
-            --accent:  #f472b6; /* pink-400 */
-            --bg:      #f8fafc;
-            --text:    #1f2937;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: "Inter", sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-        /* --- HERO --- */
-        header.hero {
-            position: relative;
-            height: 80vh;
-            background: url("cable_wharf.jpg") center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        header.hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-        }
-        header.hero .content {
-            position: relative;
-            color: #fff;
-        }
-        header.hero h1 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(2.5rem, 4vw, 4.5rem);
-            margin-bottom: .5rem;
-        }
-        /* --- NAV --- */
-        nav {
-            position: sticky;
-            top: 0;
-            background: #fff;
-            padding: .5rem 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,.05);
-            z-index: 50;
-        }
-        nav ul { list-style: none; display: flex; gap: 1rem; justify-content: center; }
-        nav a { text-decoration: none; color: var(--primary); font-weight: 600; }
-        /* --- SECTIONS --- */
-        section { padding: 4rem 1rem; max-width: 1000px; margin: auto; }
-        h2.section-title {
-            font-family: "Playfair Display", serif;
-            font-size: 2.25rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            color: var(--primary);
-        }
-        /* --- GALLERY --- */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-        .gallery img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: .5rem;
-        }
-        /* --- FORM --- */
-        form#rsvpForm {
-            display: grid;
-            gap: 1rem;
-            max-width: 500px;
-            margin: auto;
-        }
-        form input, form select, form button {
-            padding: .75rem 1rem;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: .4rem;
-        }
-        form button {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        form button:hover { background: #334155; }
-        /* --- TABLE --- */
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        table, th, td { border: 1px solid #e2e8f0; }
-        th, td { padding: .5rem; text-align: left; }
-        /* --- VIDEO --- */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-        }
-        .video-container iframe, .video-container video {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
-        /* --- FOOTER --- */
-        footer {
-            background: var(--primary);
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-        }
-        /* --- DARK MODE --- */
-        @media (prefers-color-scheme: dark) {
-            :root { --bg: #0f172a; --text: #f1f5f9; --primary: #93c5fd; }
-            nav { background: #1e293b; }
-        }
-    </style>
+  <style>
+    /* ----------  THEME  ---------- */
+    :root{
+      --primary:#7dd3fc;    /* sky-300 */
+      --accent:#f472b6;     /* pink-400 */
+      --bg:#0f172a;         /* slate-900 */
+      --bg-alt:#1e293b;     /* slate-800 */
+      --text:#f8fafc;       /* slate-50  */
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:"Inter",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      scroll-behavior:smooth;
+    }
+    img{max-width:100%;display:block;}
+
+    /* ----------  NAV  ---------- */
+    nav{
+      position:sticky;top:0;z-index:1000;
+      background:var(--bg-alt);
+      box-shadow:0 2px 4px rgba(0,0,0,.3);
+    }
+    nav ul{display:flex;justify-content:center;gap:1.25rem;list-style:none;padding:.75rem 1rem;}
+    nav a{
+      color:var(--primary);text-decoration:none;font-weight:600;
+      transition:color .25s;
+    }
+    nav a:hover{color:var(--accent);}
+
+    /* ----------  HERO  ---------- */
+    header.hero{
+      position:relative;height:80vh;min-height:450px;
+      background:url("cable_wharf.jpg") center/cover no-repeat;
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      overflow:hidden;
+    }
+    header.hero::after{
+      content:"";position:absolute;inset:0;background:rgba(0,0,0,.55);
+    }
+    header.hero .content{position:relative;color:#fff;animation:fadeIn 1s ease-out;}
+    header.hero h1{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2.75rem,5vw,5rem);
+      margin-bottom:.5rem;
+    }
+    header.hero p{font-size:1.1rem;letter-spacing:.03em;}
+
+    /* ----------  SECTIONS  ---------- */
+    section{
+      padding:4rem 1rem;max-width:1000px;margin:auto;
+      opacity:0;transform:translateY(40px);
+      transition:opacity .8s ease-out,transform .8s ease-out;
+    }
+    section.visible{opacity:1;transform:none;}
+    h2.section-title{
+      font-family:"Playfair Display",serif;
+      font-size:2.5rem;text-align:center;margin-bottom:1.75rem;
+      color:var(--primary);
+    }
+
+    /* ----------  STORY  ---------- */
+    #story p{max-width:720px;margin:.9rem auto;text-align:center;}
+
+    /* ----------  SCHEDULE  ---------- */
+    #schedule ul{list-style:none;display:grid;gap:.75rem;max-width:420px;margin:auto;text-align:center;}
+    #schedule li strong{color:var(--accent);}
+
+    /* ----------  GALLERY  ---------- */
+    .gallery{
+      display:grid;gap:1rem;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    }
+    .gallery img{height:200px;object-fit:cover;border-radius:.5rem;}
+
+    /* ----------  RSVP  ---------- */
+    #rsvp iframe{border:none;width:100%;height:800px;border-radius:.5rem;background:#fff;}
+
+    /* ----------  GUEST LIST  ---------- */
+    #guestlist button{
+      padding:.75rem 1.5rem;border:none;border-radius:.4rem;
+      font-weight:600;cursor:pointer;background:var(--primary);color:#000;
+      transition:background .3s;
+    }
+    #guestlist button:hover{background:var(--accent);}
+    table{width:100%;border-collapse:collapse;margin-top:1rem;}
+    th,td{border:1px solid #334155;padding:.5rem;text-align:left;}
+
+    /* ----------  LOCATION  ---------- */
+    #location iframe{border:0;width:100%;height:380px;border-radius:.5rem;}
+
+    /* ----------  FOOTER  ---------- */
+    footer{
+      background:var(--bg-alt);color:var(--text);text-align:center;padding:1.25rem;
+      font-size:.9rem;
+    }
+
+    /* ----------  ANIMATIONS  ---------- */
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+  </style>
 </head>
 <body>
 
-    <!-- Sticky Nav -->
-    <nav>
-        <ul>
-            <li><a href="#story">Our Story</a></li>
-            <li><a href="#schedule">Schedule</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-            <li><a href="#guestlist">Guests</a></li>
-            <li><a href="#video">Video</a></li>
-            <li><a href="#location">Location</a></li>
-        </ul>
-    </nav>
+  <!-- ===== NAV ===== -->
+  <nav>
+    <ul>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+      <li><a href="#guestlist">Guests</a></li>
+      <li><a href="#location">Location</a></li>
+    </ul>
+  </nav>
 
-    <!-- Hero -->
-    <header class="hero" id="home">
-        <div class="content">
-            <h1>Peter &amp; Rachel</h1>
-            <p>September 12, 2026 · Cable Wharf, Halifax</p>
-        </div>
-    </header>
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="home">
+    <div class="content">
+      <h1>Peter &amp; Rachel</h1>
+      <p>September&nbsp;12,&nbsp;2026 · Cable Wharf, Halifax</p>
+    </div>
+  </header>
 
-    <!-- Story -->
-    <section id="story">
-        <h2 class="section-title">Our Story</h2>
-        <p style="text-align:center; max-width:700px; margin:auto;">We first crossed paths during orientation week at <strong>St. Francis Xavier University</strong> in Antigonish, Nova Scotia. Peter had driven down from Peterborough, Ontario, and Rachel had made the quick trip from Dartmouth. Those early days were filled with late‑night study sessions, coffee runs, and enough inside jokes to last a lifetime.</p>
-        <p style="text-align:center; max-width:700px; margin:1.25rem auto;">For three years we were inseparable friends—cheering at X‑men games, swapping notes in the library, and exploring every hidden corner of campus. In fourth year friendship quietly turned into something more, and we went on our first “real” date (pizza at Kenny’s, naturally). We’ve been together ever since.</p>
-        <p style="text-align:center; max-width:700px; margin:auto;">After graduation we traded textbooks for boarding passes. We danced through <strong>Spain</strong>, chased sunsets in <strong>Italy</strong> and <strong>Croatia</strong>, island‑hopped across <strong>Greece</strong>, and—most memorably—got engaged on a windswept cliff in <strong>Portugal</strong>. Each trip etched new stories into our shared map, and each one made it clearer that home is simply wherever we are together.</p>
-        <p style="text-align:center; max-width:700px; margin-top:1.25rem;">Now we’re thrilled to write the next chapter with all of you. Thank you for being part of our adventure—see you on June&nbsp;20th!</p>
-    </section>
+  <!-- ===== STORY ===== -->
+  <section id="story">
+    <h2 class="section-title">Our Story</h2>
+    <p>We first crossed paths during orientation week at <strong>St.&nbsp;Francis Xavier University</strong> in Antigonish, Nova Scotia. Peter had driven down from Peterborough, Ontario, and Rachel had made the quick trip from Dartmouth. Those early days were filled with late-night study sessions, coffee runs, and enough inside jokes to last a lifetime.</p>
+    <p>For three years we were inseparable friends—cheering at X-men games, swapping notes in the library, and exploring every hidden corner of campus. In fourth year friendship quietly turned into something more, and we went on our first “real” date (pizza at Kenny’s, naturally). We’ve been together ever since.</p>
+    <p>After graduation we traded textbooks for boarding passes. We danced through <strong>Spain</strong>, chased sunsets in <strong>Italy</strong> and <strong>Croatia</strong>, island-hopped across <strong>Greece</strong>, and—most memorably—got engaged on a windswept cliff in <strong>Portugal</strong>. Each trip etched new stories into our shared map, and each one made it clearer that home is simply wherever we are together.</p>
+    <p>Now we’re thrilled to write the next chapter with all of you. Thank you for being part of our adventure—see you on September&nbsp;12th!</p>
+  </section>
 
-    <!-- Schedule -->
-    <section id="schedule">
-        <h2 class="section-title">Schedule</h2>
-        <ul style="max-width:500px;margin:auto;list-style:none;display:grid;gap:.75rem;">
-            <li><strong>3:00 PM</strong> – Ceremony</li>
-            <li><strong>4:00 PM</strong> – Cocktail Hour</li>
-            <li><strong>6:00 PM</strong> – Dinner &amp; Dancing</li>
-        </ul>
-    </section>
+  <!-- ===== SCHEDULE ===== -->
+  <section id="schedule">
+    <h2 class="section-title">Schedule</h2>
+    <ul>
+      <li><strong>3:00 PM</strong> – Ceremony</li>
+      <li><strong>4:00 PM</strong> – Cocktail Hour</li>
+      <li><strong>6:00 PM</strong> – Dinner &amp; Dancing</li>
+    </ul>
+  </section>
 
-    <!-- Gallery -->
-    <section id="gallery">
-        <h2 class="section-title">Gallery</h2>
-        <div class="gallery">
-            <!-- Replace with your own images. Each thumb links to full‑size image -->
-            <a href="IMG_0016.jpeg" data-lightbox="wedding"><img src="IMG_0016.jpeg" alt="" loading="lazy"></a>
-            <a href="IMG_0035.jpeg" data-lightbox="wedding"><img src="IMG_0035.jpeg" alt="" loading="lazy"></a>
-            <a href="IMG_0045.jpeg" data-lightbox="wedding"><img src="IMG_0045.jpeg" alt="" loading="lazy"></a>
-            <a href="IMG_1069.jpeg" data-lightbox="wedding"><img src="IMG_1069.jpeg" alt="" loading="lazy"></a>
-        </div>
-    </section>
+  <!-- ===== GALLERY ===== -->
+  <section id="gallery">
+    <h2 class="section-title">Gallery</h2>
+    <div class="gallery">
+      <!-- thumbnail → full-size pairs -->
+      <a href="IMG_0016.jpeg" data-lightbox="wedding"><img src="IMG_0016.jpeg" alt=""></a>
+      <a href="IMG_0035.jpeg" data-lightbox="wedding"><img src="IMG_0035.jpeg" alt=""></a>
+      <a href="IMG_0037.jpeg" data-lightbox="wedding"><img src="IMG_0037.jpeg" alt=""></a>
+      <a href="IMG_0045.jpeg" data-lightbox="wedding"><img src="IMG_0045.jpeg" alt=""></a>
+      <a href="IMG_0113.jpeg" data-lightbox="wedding"><img src="IMG_0113.jpeg" alt=""></a>
+      <a href="IMG_0851.jpeg" data-lightbox="wedding"><img src="IMG_0851.jpeg" alt=""></a>
+      <a href="IMG_1069.jpeg" data-lightbox="wedding"><img src="IMG_1069.jpeg" alt=""></a>
+      <a href="IMG_1277.jpeg" data-lightbox="wedding"><img src="IMG_1277.jpeg" alt=""></a>
+      <a href="IMG_1312.jpeg" data-lightbox="wedding"><img src="IMG_1312.jpeg" alt=""></a>
+      <a href="IMG_2667.jpeg" data-lightbox="wedding"><img src="IMG_2667.jpeg" alt=""></a>
+      <a href="IMG_7882.jpeg" data-lightbox="wedding"><img src="IMG_7882.jpeg" alt=""></a>
+      <a href="IMG_9744.jpeg" data-lightbox="wedding"><img src="IMG_9744.jpeg" alt=""></a>
+      <a href="IMG_9982.jpeg" data-lightbox="wedding"><img src="IMG_9982.jpeg" alt=""></a>
+    </div>
+  </section>
 
-    <!-- RSVP (Google Form embed is easiest & free) -->
-    <section id="rsvp">
-        <h2 class="section-title">RSVP</h2>
-        <iframe src="https://docs.google.com/forms/d/e/your-form-id/viewform?embedded=true"
-                width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </section>
+  <!-- ===== RSVP ===== -->
+  <section id="rsvp">
+    <h2 class="section-title">RSVP</h2>
+    <!-- Replace the src URL with your real Google Form embed link -->
+    <iframe src="https://docs.google.com/forms/d/e/your-form-id/viewform?embedded=true" loading="lazy">Loading…</iframe>
+  </section>
 
-    <!-- Guest list (auto‑updates from the Google Sheet backing the form) -->
-    <section id="guestlist">
-        <h2 class="section-title">Guest List</h2>
-        <p style="text-align:center;">Updates live from our RSVP sheet.</p>
-        <div id="guestTables"></div>
-    </section>
+  <!-- ===== GUEST LIST (pass-code protected) ===== -->
+  <section id="guestlist">
+    <h2 class="section-title">Guest List</h2>
+    <button id="showGuestsBtn">Show Guest List</button>
+    <div id="guestTables"></div>
+  </section>
 
-    <!-- Video -->
-    <section id="video">
-        <h2 class="section-title">A Look Back</h2>
-        <div class="video-container">
-            <!-- Swap for your own hosted video or YouTube link -->
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Our Video" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </section>
+  <!-- ===== LOCATION ===== -->
+  <section id="location">
+    <h2 class="section-title">Location</h2>
+    <!-- Google Maps embed for Cable Wharf (Halifax) -->
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2766.189526831103!2d-63.56737292357356!3d44.64881577107182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b5a21582364dbaf%3A0x4f5285bdcf0584d1!2sCable%20Wharf!5e0!3m2!1sen!2sca!4v1718146398510!5m2!1sen!2sca"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
 
-    <!-- Location -->
-    <section id="location">
-        <h2 class="section-title">Location</h2>
-        <iframe src="https://g.co/kgs/sccc9w4"
-                width="100%" height="350" style="border:0;" allowfullscreen></iframe>
-    </section>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    © 2025 Peter &amp; Rachel | Built with ❤️
+  </footer>
 
-    <footer>
-        <p>© 2025 Peter &amp; Rachel | Built with ❤️</p>
-    </footer>
+  <!-- Lightbox & Smooth-scroll scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 
-    <!-- Lightbox JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <script>
+    /* ----------  Scroll-triggered section fade-in  ---------- */
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})
+    },{threshold:.15});
+    document.querySelectorAll('section').forEach(sec=>observer.observe(sec));
 
-    <script>
-        /* Smooth scroll for nav links */
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+    /* ----------  Smooth scroll for nav links  ---------- */
+    document.querySelectorAll('nav a[href^="#"]').forEach(link=>{
+      link.addEventListener('click',e=>{
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+      });
+    });
 
-        /* =====================  GUEST LIST  =====================
-           1. Create a Google Form with fields Name (short answer) & Status (dropdown Yes/No)
-           2. After building, Responses ▸ Google Sheets ▸ File ▸ Share ▸ Publish to web ▸ CSV
-           3. Copy the CSV link (should look like https://docs.google.com/spreadsheets/d/1abc123…/export?format=csv)
-           4. Paste it into sheetURL below.
-           ===================================================== */
+    /* ----------  Guest list (CSV fetch gated by pass code) ---------- */
+    const PASSCODE='changeme';                    // <- choose a secret phrase
+    const sheetURL='';                            // <- paste your Publish-to-Web CSV link
 
-        const sheetURL = '';
+    document.getElementById('showGuestsBtn').addEventListener('click',()=>{
+      const attempt=prompt('Enter pass code');
+      if(attempt===PASSCODE){
+        if(!sheetURL){alert('sheetURL not set yet');return;}
+        fetch(sheetURL)
+          .then(r=>r.text())
+          .then(csvToJSON)
+          .then(buildGuestTables)
+          .catch(err=>{console.error(err);alert('Could not load guest list');});
+      }else{
+        alert('Incorrect code');
+      }
+    });
 
-        function csvToJSON(csv) {
-            const [headerLine, ...lines] = csv.trim().split('\n');
-            const headers = headerLine.split(',');
-            return lines.map(l => Object.fromEntries(l.split(',').map((val, i) => [headers[i].trim(), val.trim()])));
-        }
+    function csvToJSON(csv){
+      const [header,...lines]=csv.trim().split('\n');
+      const cols=header.split(',');
+      return lines.map(l=>Object.fromEntries(
+        l.split(',').map((val,i)=>[cols[i].trim(),val.trim()])
+      ));
+    }
 
-        function makeTable(arr) {
-            if (!arr.length) return '<p>None yet.</p>';
-            const rows = arr.map(r => `<tr><td>${r.Name}</td></tr>`).join('');
-            return `<table><tbody>${rows}</tbody></table>`;
-        }
+    function buildGuestTables(data){
+      const yes=data.filter(r=>r.Status==='Yes');
+      const no=data.filter(r=>r.Status==='No');
+      const pending=data.filter(r=>!['Yes','No'].includes(r.Status));
 
-        function buildGuestTables(data){
-            const yes      = data.filter(r => r.Status === 'Yes');
-            const no       = data.filter(r => r.Status === 'No');
-            const unknown  = data.filter(r => r.Status === 'Pending' || !r.Status);
-            const container = document.getElementById('guestTables');
-            container.innerHTML = `
-                <h3>Coming (${yes.length})</h3>${makeTable(yes)}
-                <h3>Regrets (${no.length})</
+      const makeTable=arr=>{
+        if(!arr.length)return '<p>None</p>';
+        return `<table><tbody>${arr.map(r=>`<tr><td>${r.Name}</td></tr>`).join('')}</tbody></table>`;
+      };
+
+      document.getElementById('guestTables').innerHTML=
+        `<h3>Coming (${yes.length})</h3>${makeTable(yes)}
+         <h3>Regrets (${no.length})</h3>${makeTable(no)}
+         <h3>Pending (${pending.length})</h3>${makeTable(pending)}`;
+    }
+  </script>
+
+</body>
+</html>
+
